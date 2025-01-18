@@ -22,9 +22,17 @@ for i, j in zip(range(end_x, center_x - 1, -1), range(center_y, end_y + 1)):
     matrix[j][i] = 1
 for i, j in zip(range(center_x, start_x - 1, -1), range(end_y, center_y - 1, -1)):
     matrix[j][i] = 1
-for row in range(center_y - 3, center_y + 3):
-    for col in range(center_x - 3, center_x + 4):
-        if row == center_y - 3 and center_x - col % 3 != 0 or row == center_y - 2 and center_x - col % 3 == 0 or row - col == 2 or row + col == center_x + 4:
-            matrix[row][col] = 2
+for i in range(center_y, center_y + 6):
+    for j in range(center_x, center_x + 7):
+        if i == center_y and j in [center_x + 1, center_x + 2, center_x + 4, center_x + 5] :
+            matrix[i][j] = 2
+        elif i == center_y + 1 and j in [center_x, center_x + 3, center_x + 6]:
+            matrix[i][j] = 2
+        elif i == center_y + 2 and j in [center_x + 1, center_x + 5]:
+            matrix[i][j] = 2
+        elif i == center_y + 3 and j in [center_x + 2, center_x + 4]:
+            matrix[i][j] = 2
+        elif i == center_y + 4 and j in [center_x + 3]:
+            matrix[i][j] = 2
 for i in range(size):
     print(*matrix[i])
